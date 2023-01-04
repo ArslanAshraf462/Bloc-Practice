@@ -1,6 +1,7 @@
 import 'package:bloc_practice/bloc/internet_bloc/internet_bloc.dart';
 import 'package:bloc_practice/cubit/internet_cubit.dart';
 import 'package:bloc_practice/screens/home_screen/home_screen.dart';
+import 'package:bloc_practice/screens/sign_in_screen/bloc/sign_in_bloc.dart';
 import 'package:bloc_practice/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,13 +22,15 @@ class MyApp extends StatelessWidget {
         create: (context) => InternetBloc(),),
         BlocProvider(
           create: (context) => InternetCubit(),),
+        BlocProvider(
+          create: (context) => SignInBloc(),),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SignInScreen(),
+        home: SignInScreen(),
       ),
     );
   }

@@ -9,4 +9,6 @@ class AppStrings{
   static const String emailAddressText='Email Address';
   static const String passwordText='Password';
   static const String errorText='Error will show up here';
+  static const String emailErrorText='Please enter a valid email address';
+  static const String passwordErrorText='Please enter a valid password';
 }
