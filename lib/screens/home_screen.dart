@@ -1,6 +1,7 @@
 import 'package:bloc_practice/bloc/internet_bloc/internet_bloc.dart';
 import 'package:bloc_practice/bloc/internet_bloc/internet_state.dart';
 import 'package:bloc_practice/constants/app_colors.dart';
+import 'package:bloc_practice/cubit/internet_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,30 +15,54 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: BlocConsumer<InternetBloc, InternetState>(
+          child: BlocConsumer<InternetCubit, InternetStates>(
               listener: (context, state) {
-            if (state is InternetGainedState) {
-              showSnackBar(
-                context: context,
-                content: AppStrings.internetConnectedText,
-                color: AppColors.greenColor,
-              );
-            } else if (state is InternetLostState) {
-              showSnackBar(
-                context: context,
-                content: AppStrings.internetNotConnectedText,
-                color: AppColors.redColor,
-              );
-            }
-          }, builder: (context, state) {
-            if (state is InternetGainedState) {
+                if (state == InternetStates.gained) {
+                  showSnackBar(
+                    context: context,
+                    content: AppStrings.internetConnectedText,
+                    color: AppColors.greenColor,
+                  );
+                } else if (state == InternetStates.lost) {
+                  showSnackBar(
+                    context: context,
+                    content: AppStrings.internetNotConnectedText,
+                    color: AppColors.redColor,
+                  );
+                }
+              }, builder: (context, state) {
+            if (state == InternetStates.gained) {
               return const Text(AppStrings.connectedText);
-            } else if (state is InternetLostState) {
+            } else if (state == InternetStates.lost) {
               return const Text(AppStrings.notConnectedText);
             } else {
               return const Text(AppStrings.loadingText);
             }
           }),
+          // BlocConsumer<InternetBloc, InternetState>(
+          //     listener: (context, state) {
+          //   if (state is InternetGainedState) {
+          //     showSnackBar(
+          //       context: context,
+          //       content: AppStrings.internetConnectedText,
+          //       color: AppColors.greenColor,
+          //     );
+          //   } else if (state is InternetLostState) {
+          //     showSnackBar(
+          //       context: context,
+          //       content: AppStrings.internetNotConnectedText,
+          //       color: AppColors.redColor,
+          //     );
+          //   }
+          // }, builder: (context, state) {
+          //   if (state is InternetGainedState) {
+          //     return const Text(AppStrings.connectedText);
+          //   } else if (state is InternetLostState) {
+          //     return const Text(AppStrings.notConnectedText);
+          //   } else {
+          //     return const Text(AppStrings.loadingText);
+          //   }
+          // }),
           // BlocBuilder<InternetBloc,InternetState>(
           //   builder: (context,state) {
           //     /// == means to check value
