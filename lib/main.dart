@@ -1,6 +1,7 @@
 import 'package:bloc_practice/bloc/internet_bloc/internet_bloc.dart';
 import 'package:bloc_practice/cubit/internet_cubit.dart';
-import 'package:bloc_practice/screens/home_screen.dart';
+import 'package:bloc_practice/screens/home_screen/home_screen.dart';
+import 'package:bloc_practice/screens/sign_in_screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const HomeScreen(),
+        home: const SignInScreen(),
       ),
     );
   }

@@ -5,7 +5,8 @@ import 'package:bloc_practice/cubit/internet_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../constants/app_strings.dart';
+import '../../constants/app_strings.dart';
+import '../../widgets/text_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -32,11 +33,11 @@ class HomeScreen extends StatelessWidget {
                 }
               }, builder: (context, state) {
             if (state == InternetStates.gained) {
-              return const Text(AppStrings.connectedText);
+              return const TextWidget(title: AppStrings.connectedText);
             } else if (state == InternetStates.lost) {
-              return const Text(AppStrings.notConnectedText);
+              return const TextWidget(title: AppStrings.notConnectedText);
             } else {
-              return const Text(AppStrings.loadingText);
+              return const TextWidget(title: AppStrings.loadingText);
             }
           }),
           // BlocConsumer<InternetBloc, InternetState>(
@@ -56,11 +57,11 @@ class HomeScreen extends StatelessWidget {
           //   }
           // }, builder: (context, state) {
           //   if (state is InternetGainedState) {
-          //     return const Text(AppStrings.connectedText);
+          //     return const TextWidget(title: AppStrings.connectedText);
           //   } else if (state is InternetLostState) {
-          //     return const Text(AppStrings.notConnectedText);
+          //     return const TextWidget(title: AppStrings.notConnectedText);
           //   } else {
-          //     return const Text(AppStrings.loadingText);
+          //     return const TextWidget(title: AppStrings.loadingText);
           //   }
           // }),
           // BlocBuilder<InternetBloc,InternetState>(
@@ -68,11 +69,11 @@ class HomeScreen extends StatelessWidget {
           //     /// == means to check value
           //     /// is means to check data type
           //     if(state is InternetGainedState){
-          //       return const Text(AppStrings.connectedText);
+          //       return const TextWidget(title: AppStrings.connectedText);
           //     } else if(state is InternetLostState){
-          //       return const Text(AppStrings.notConnectedText);
+          //       return const TextWidget(title: AppStrings.notConnectedText);
           //     }else{
-          //       return const Text(AppStrings.loadingText);
+          //       return const TextWidget(title: AppStrings.loadingText);
           //     }
           //
           //   }
@@ -87,7 +88,7 @@ class HomeScreen extends StatelessWidget {
       required String content,
       required Color color}) {
     final snackBar = SnackBar(
-      content: Text(content),
+      content: TextWidget(title: content),
       backgroundColor: color,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
