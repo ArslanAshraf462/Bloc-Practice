@@ -11,4 +11,6 @@ class AppStrings{
   static const String errorText='Error will show up here';
   static const String emailErrorText='Please enter a valid email address';
   static const String passwordErrorText='Please enter a valid password';
+  static const String postTitleText='API Handling';
+  static const String postErrorText='An Error Occurred';
 }
